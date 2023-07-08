@@ -4,7 +4,7 @@ Minecraft統合版及びEducation EditionにおいてMinecraft上のチャット
 Education Editionにおける使い方は[こちら](https://github.com/akahoshi1421/Minecraft-GPT/blob/main/README-edu.md)
 
 ## 一例
-![参考画像]("https://github.com/akahoshi1421/Minecraft-GPT/blob/main/img/example.png?raw=true")
+![参考画像](img/example.png)
 
 ## 使い方
 1. パッケージをインストールする
