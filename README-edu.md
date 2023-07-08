@@ -1,7 +1,7 @@
 # Minecraft-GPT
 Minecraft統合版及びEducation EditionにおいてMinecraft上のチャットからGPTを呼び出せるようにするためのWebSocketサーバです。
 
-Education Editionにおける使い方は[こちら](https://github.com/akahoshi1421/Minecraft-GPT/blob/main/README-edu.md)
+統合版における使い方は[こちら](https://github.com/akahoshi1421/Minecraft-GPT/blob/main/README.md)
 
 ## 一例
 ![参考画像]("img/example.png")
@@ -33,26 +33,17 @@ Education Editionにおける使い方は[こちら](https://github.com/akahoshi
     node server.js
     ```
 
-5. PowerShellを管理者権限で起動し、以下のコマンドを実行
-    ```shell
-    CheckNetIsolation.exe LoopbackExempt -a -n="Microsoft.MinecraftUWP_8wekyb3d8bbwe"
-    ```
-
-6. Minecraftのワールド設定を開き以下を変更
-
-    設定 -> ゲーム -> Education Edition の項目をオンにする
-
-7. Minecraftのワールドに入り、以下の設定を変更する
+5. Minecraftのワールドに入り、設定を変更する
 
     設定 -> 一般 -> "暗号化された WebSocket の要求" の項目をオフにする
 
-8. Minecraftのチャットから以下のコマンドを入力
+6. Minecraftのチャットから以下のコマンドを入力
     ```.mcfunction
     /wsserver localhost:9999
     ```
     正常に動いていたら"サーバーへの接続を確立しました: ws://localhost:9999"と表示されます。
 
-8. Minecraftのチャットから以下の文章を入力
+7. Minecraftのチャットから以下の文章を入力
     ```
     gpt: 入力したい文章
     ```
