@@ -12,6 +12,7 @@ touch .env
 ```
 
 3. .envファイルに以下のような記述する
+
 [openAIのサイト](https://platform.openai.com/account/api-keys)にアクセスし、Create new secret keyを押し、APIキーを発行します。
 **※ completionsのみ対応しています**
 ```.env
@@ -27,6 +28,7 @@ node server.js
 ```
 
 5. Minecraftのワールドに入り、設定を変更する
+
 設定 -> 一般 -> "暗号化された WebSocket の要求" の項目をオフにする
 
 6. Minecraftのチャットから以下のコマンドを入力
