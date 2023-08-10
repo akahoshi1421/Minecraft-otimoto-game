@@ -16,7 +16,6 @@ Minecraft統合版及びEducation EditionにおいてMinecraftから東洋大学
 
 3. .envファイルに以下のような記述する
 
-    **※ completionsのみ対応しています**
     ```.env
     URL="{{ API_URL }}"
     API_KEY="{{ YOUR_API_KEY }}"
