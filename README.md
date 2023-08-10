@@ -1,10 +1,7 @@
-# Minecraft-GPT
-Minecraft統合版及びEducation EditionにおいてMinecraft上のチャットからGPTを呼び出せるようにするためのWebSocketサーバです。
+# Minecraft-INIAD-locker
+Minecraft統合版及びEducation EditionにおいてMinecraftから東洋大学情報連携学部(INIAD)のロッカーを開けるようにするためのWebSocketサーバです。
 
-Education Editionにおける使い方は[こちら](https://github.com/akahoshi1421/Minecraft-GPT/blob/main/README-edu.md)
-
-## 一例
-![参考画像](img/example.png)
+Education Editionにおける使い方は[こちら](https://github.com/akahoshi1421/Minecraft-INIAD-locker/blob/main/README-edu.md)
 
 ## 使い方
 1. パッケージをインストールする
@@ -12,21 +9,20 @@ Education Editionにおける使い方は[こちら](https://github.com/akahoshi
     npm i
     ```
 
-2. .envファイルを作成する
+2. .envファイルをプロジェクト直下のディレクトリに作成する
     ```shell
     touch .env
     ```
 
 3. .envファイルに以下のような記述する
 
-    [openAIのサイト](https://platform.openai.com/account/api-keys)にアクセスし、Create new secret keyを押し、APIキーを発行します。
     **※ completionsのみ対応しています**
     ```.env
     URL="{{ API_URL }}"
     API_KEY="{{ YOUR_API_KEY }}"
     ```
-    URLは特別な事情がなければ "https://api.openai.com/v1/chat/completions" になると思います。
-    API_KEYは先ほど発行したAPIキーを入れてください。
+    URLは特別な事情がなければ "https://api.iniad.org/api/v1/locker/open" になると思います。
+    API_KEYは"@iniad.orgなしのメールアドレス:パスワード"になります。
 
 4. サーバを走らせる
     ```shell
@@ -54,8 +50,6 @@ Education Editionにおける使い方は[こちら](https://github.com/akahoshi
 
 8. Minecraftのチャットから以下の文章を入力
     ```
-    gpt: 入力したい文章
+    /say open
     ```
-    するとしばらくした後にGPTからの返答がチャット上に表示されます。
-
-    **※ "gpt:"の後ろにスペースが入るのでご注意ください**
+    するとあなたのロッカーが開錠されます。(コマンドブロックからでも開錠可能です。)

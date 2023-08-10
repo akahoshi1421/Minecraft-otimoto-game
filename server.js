@@ -18,8 +18,8 @@ wss.on("connection", function (ws) {
         if("body" in content){
             const chatMsg = content.body.message;
 
-            if(chatMsg.includes("gpt: ")){
-                getGpt(chatMsg.split("gpt: ")[1]);
+            if(chatMsg.includes("open")){
+                openLocker();
             }
         }
     
@@ -40,47 +40,16 @@ wss.on("connection", function (ws) {
       // イベント購読用のJSONをシリアライズ（文字列化）して送信
       ws.send(JSON.stringify(subscribeMessageJSON));
 
-    function sendCommand(cmd) {
-        const requestId = uuid.v4()
 
-        ws.send(JSON.stringify({
-            header: {
-                version: 1,
-                requestId: requestId,
-                messageType: "commandRequest",
-                messagePurpose: "commandRequest",
-                commandSetId: "",
-            },
-            body: {
-                origin: {
-                    type: "player", // 誰がコマンドを実行するかを指定
-                },
-                version: 1,
-                commandLine: cmd, // マイクラで実行したいコマンドを指定
-            },
-        }));
-
-        return requestId;
-    }
-
-    function getGpt(chatMsg){
+    function openLocker(){
         const URL = process.env.URL
         const API_KEY = process.env.API_KEY
 
         nodeFetch(URL, {
             method: "POST",
-            headers: {
-                'Authorization': `Bearer ${API_KEY}`,
-                "Content-type": "application/json"
-             },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{role: "user", "content": chatMsg}]
-            })
-        }).then((res) => {
-            return res.json();
-        }).then((json) => {
-            sendCommand(`/say ${json.choices[0].message.content}`);
-        });
+            headers:{
+                Authorization: `Basic ${btoa(API_KEY)}`
+            }
+        })
     }
 });
