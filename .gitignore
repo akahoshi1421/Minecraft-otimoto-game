@@ -20,4 +20,4 @@ Thumbs.db
 .env
 
 #ts化のためjsを除外
-.js
+*.js
