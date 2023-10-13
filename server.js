@@ -13,9 +13,16 @@ wss.on("connection", function (ws) {
     console.log("接続完了！");
     CLIENT_LIST.push(ws);
 
+    ws.on("close", () => {
+      CLIENT_LIST.forEach((user, index) => {
+        if(user === ws){
+          CLIENT_LIST.slice(index, 1);
+        }
+      });
+    });
+
     ws.on("message", function (rawData) {
         const content = JSON.parse(rawData.toString());
-        console.log(content);
 
         CLIENT_LIST.forEach(user => {
           if(user !== ws) {
@@ -55,7 +62,7 @@ wss.on("connection", function (ws) {
           "messagePurpose": "subscribe", // "subscribe" を指定
         },
         "body": {
-          "eventName": "EntitySpawned" // イベント名を指定。(PlayerMessage)
+          "eventName": "PlayerMessage" // イベント名を指定。(PlayerMessage)
         },
       };
     
