@@ -26,7 +26,12 @@ wss.on("connection", function (ws: ws) {
 
         CLIENT_LIST.forEach(user => {
           if(user !== ws) {
-            if("direction" in content){
+            if("gameStart" in content){
+                sendCommand("/setblock -24 -60 6 redstone_block");
+            }
+
+            // エージェント方向指定
+            else if("direction" in content){
               const direction = content.direction;
               switch(direction){
                 case "left":
@@ -40,6 +45,8 @@ wss.on("connection", function (ws: ws) {
                   break;
               } 
             }
+
+            // 終了コマンド
             else if("header" in content){
               if(content.header.eventName === "PlayerMessage"){
                 const command = content.body.message.split("] ")[1]
