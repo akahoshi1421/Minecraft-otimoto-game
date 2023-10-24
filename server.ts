@@ -49,8 +49,8 @@ wss.on("connection", function (ws: ws) {
             // 終了コマンド
             else if("header" in content){
               if(content.header.eventName === "PlayerMessage"){
-                const command = content.body.message.split("] ")[1]
-                user.send(command)
+                const command = content.body.message.match(/(\d+)/)[0];
+                user.send(JSON.stringify({time: Number(command)}))
               }
             }
             else{
